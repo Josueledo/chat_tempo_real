@@ -23,6 +23,10 @@ export class ChatService {
     this.socket.emit('joinRoom', { username, room });
   }
 
+  public getUsersInRoom() {
+    return this.socket.fromEvent('usersList');
+  }
+
   public sendMessage(message: string) {
     if (!this.isBrowser) return; // só executa no browser
     this.socket.emit('message', message);

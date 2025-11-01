@@ -23,6 +23,7 @@ faPaperPlane = faPaperPlane
   message = '';
   messages: { username: string, message: string }[] = [];
   joined = false;
+users: { username: string, online: boolean }[] = [];
 
   constructor(
     private chatService: ChatService,
@@ -40,6 +41,19 @@ ngOnChange(){
       });
     });
 }
+
+ngOnInit() {
+  this.chatService.getUsersInRoom().subscribe((users: any) => {
+    this.users = users;
+    console.log(users)
+    this.cd.detectChanges();
+  });
+}
+getUserStatus(username: string): boolean {
+  const user = this.users.find(u => u.username === username);
+  return user ? user.online : false;
+}
+
 
   joinRoom() {
     if (!this.username || !this.room) return;
