@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+}
+
+:root{
+  --main: rgb(29, 29, 29);
+  --background:  rgb(23, 23, 23);
+  --colorFont: rgb(236, 236, 236);
+  --input: rgb(44, 44, 44);
+  --primary: rgba(43, 141, 227, 1);
+  --icon: rgb(196, 196, 196);
+  --colorFontSecondary: rgb(170, 170, 170);
+}

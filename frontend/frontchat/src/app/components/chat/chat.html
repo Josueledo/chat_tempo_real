@@ -1,0 +1,121 @@
+<div class="container">
+  @if (!joined) {
+  <div class="join">
+    <div class="login">
+      <h3>Entrar no chat</h3>
+      <input type="text" placeholder="Seu nome" [(ngModel)]="username" />
+      <input type="text" placeholder="Sala" [(ngModel)]="room" />
+      <button (click)="joinRoom()">Entrar</button>
+    </div>
+  </div>
+}
+@else {
+
+
+  <div class="allchats">
+    <div class="header">
+      <div class="user">
+        <div class="avatar"></div>
+        {{username}}</div>
+      <div class="config">
+       <fa-icon [icon]="faEllipsis" />
+      </div>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search">
+      <div class="icon">
+        <fa-icon [icon]="faSearch" />
+      </div>
+    </div>
+    <ul>
+      <li>
+        <div class="avatar"></div>
+        <div class="right">
+          <span>{{room}}</span>
+          <div class="last_message">{{messages[messages.length + 1]}}</div>
+        </div>
+      </li>
+      <li>
+        <div class="avatar"></div>
+        <div class="right">
+          <span>Group name</span>
+          <div class="last_message">Loren ipsum</div>
+        </div>
+      </li>
+      <li>
+        <div class="avatar"></div>
+        <div class="right">
+          <span>Group name</span>
+          <div class="last_message">Loren ipsum</div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+  <div class="messagem">
+    @if (joined) {
+      <div class="header">
+        <div class="user">
+
+          <div class="avatar"></div>
+          <h3>Sala: {{ room }}</h3>
+
+        </div>
+        <ul class="icons">
+          <li>
+            <fa-icon [icon]="faStar" />
+          </li>
+          <li>
+            <fa-icon [icon]="faUserPlus" />
+          </li>
+          <li>
+            <fa-icon [icon]="faCamera" />
+          </li>
+          <li>
+            <fa-icon [icon]="faPhone" />
+          </li>
+        </ul>
+      </div>
+      <ul class="messages">
+        <li *ngFor="let msg of messages"
+            [ngClass]="{
+        'send': msg.username === username,
+        'sistema': msg.username === 'Sistema',
+        'receive': msg.username !== username && msg.username !== 'Sistema'
+      }">
+
+          @if (msg.username === username) {
+            <div class="avatar"></div>
+            <div class="box">
+              <span class="user"><strong>Você</strong></span>
+              <div class="text">{{ msg.message }}</div>
+            </div>
+          }@else if (msg.username === "Sistema") {
+            <div class="box">
+              <div class="text">{{ msg.message }}</div>
+            </div>
+          }
+          @else {
+            <div class="avatar"></div>
+            <div class="box">
+              <span class="user"><strong>{{ msg.username }}</strong></span>
+              <div class="text">{{ msg.message }}</div>
+            </div>
+          }
+
+        </li>
+      </ul>
+      <div class="input_container">
+
+        <input
+        type="text"
+        placeholder="Mensagem"
+        [(ngModel)]="message"
+        (keyup.enter)="sendMessage()"
+        />
+        <button (click)="sendMessage()"><fa-icon [icon]="faPaperPlane" /></button>
+      </div>
+      }
+  </div>
+  }
+</div>
