@@ -238,15 +238,28 @@
         &.send {
           flex-direction: row-reverse;
           justify-content: end;
+
+          .avatar{
+                 background: linear-gradient(
+              90deg,
+              rgba(43, 141, 227, 1) 0%,
+              rgba(62, 136, 240, 1) 100%
+            );
+          }
           .user {
             font-size: 0.8rem;
           }
           .box {
             min-width: 120px;
-            background-color: var(--input);
             padding: 15px;
             border-radius: 15px;
             border-bottom-right-radius: 0;
+             background: #2b8de3;
+            background: linear-gradient(
+              90deg,
+              rgba(43, 141, 227, 1) 0%,
+              rgba(62, 136, 240, 1) 100%
+            );
           }
         }
         &.receive {
@@ -254,21 +267,11 @@
             font-size: 0.8rem;
           }
           .avatar {
-            background: #2b8de3;
-            background: linear-gradient(
-              90deg,
-              rgba(43, 141, 227, 1) 0%,
-              rgba(62, 136, 240, 1) 100%
-            );
+            background: var(--input);
           }
           .box {
             min-width: 120px;
-            background: #2b8de3;
-            background: linear-gradient(
-              90deg,
-              rgba(43, 141, 227, 1) 0%,
-              rgba(62, 136, 240, 1) 100%
-            );
+            background-color: var(--input);
             padding: 15px;
             border-radius: 15px;
             border-bottom-left-radius: 0;

@@ -68,6 +68,10 @@ socket.on('joinRoom', ({ username, room }) => {
   }
 
   console.log(`❌ ${username} saiu da sala`);
+    socket.broadcast.to(room).emit('received', {
+    username: "Sistema",
+    message: `${username} saiu da sala`
+  });
 });
 
 });
